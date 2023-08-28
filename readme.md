@@ -25,3 +25,7 @@ console.log(styledText);
 
 console.log(style({text: "Hello Dunia!", textStyle: ["bold", "underline"]}));
 ```
+
+## License
+
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
