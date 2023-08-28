@@ -1,2 +1,20 @@
 const styler = require("./");
-console.log(style({ text: "hello world", color: "fulvous" }));
+
+const x = style({
+  text: "Hello world!",
+  color: "banana",
+  textStyle: ["inverse", "bold","underline"],
+});
+
+console.log(x);
+
+/*
+
+style ->
+ text,
+ background,
+ color,
+ textStyle,
+ line
+
+*/

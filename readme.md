@@ -15,7 +15,7 @@ npm install cli-styler.js
 require("cli-styler.js"); // global
 
 const styledText = style({
-  text: "Hello, world!"",
+  text: "Hello, world!",
   color: [255, 0, 0], // Red color
   background: [0, 0, 255], // Blue background
   textStyle: "bold", // Bold text style or ["bold", "underline", "italic"] to add more text style

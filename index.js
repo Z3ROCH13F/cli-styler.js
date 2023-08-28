@@ -1,5 +1,6 @@
 const { sc } = require("./lib/select-color"),
   { st } = require("./lib/style-text"),
+  { ln } = require("./lib/line"),
   { warning } = require("./lib/func");
 
 const Mf = (x) => Math.floor(x),
@@ -9,7 +10,9 @@ const Mf = (x) => Math.floor(x),
 
 global.style = (x) => {
   let text_style = "";
-  let text = isArr(x.text) ? x.text.join("\x20") : x.text || "";
+  let line = ln(x.line) || ln("inline");
+  let text = isArr(x.text) ? x.text.join(line) : x.text || "";
+
   let color = rgb(
     ...(x.color && isArr(x.color) && x.color.length === 3
       ? x.color
