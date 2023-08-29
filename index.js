@@ -1,7 +1,8 @@
 const { sc } = require("./lib/select-color"),
   { st } = require("./lib/style-text"),
   { ln } = require("./lib/line"),
-  { warning } = require("./lib/func");
+  { warning } = require("./lib/func"),
+  { example } = require("./lib/example");
 
 const Mf = (x) => Math.floor(x),
   isArr = (x) => Array.isArray(x),
@@ -16,12 +17,12 @@ global.style = (x) => {
   let color = rgb(
     ...(x.color && isArr(x.color) && x.color.length === 3
       ? x.color
-      : sc(x.color) || [255, 255, 255])
+      : sc(x.color) || sc("white"))
   );
   let background = br(
     ...(x.background && isArr(x.background) && x.background.length === 3
       ? x.background
-      : sc(x.background) || [0, 0, 0])
+      : sc(x.background) || sc("black"))
   );
 
   if (x.textStyle) {
@@ -34,25 +35,8 @@ global.style = (x) => {
   return `${background}${color}${text_style}${text}\x1b[0m`;
 };
 
-const e = style({
-  text: `
-example:
-const x = style({text: "hello world", color: [0,255,255], textStyle: "underline"})
-console.log(x)
-
-output: ${style({
-    text: "hello world",
-    color: [0, 255, 255], // output color
-    textStyle: "underline",
-  })}
-`,
-  color: [200, 200, 0], // example color
-});
-
 module.exports = {
   style,
   warning,
-  example: () => {
-    console.log(e);
-  },
+  example,
 };

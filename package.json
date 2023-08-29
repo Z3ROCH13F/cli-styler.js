@@ -1,6 +1,6 @@
 {
   "name": "cli-styler.js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -9,9 +9,13 @@
     "test": "node test.js"
   },
   "keywords": [
+    "terminal",
+    "color",
     "colors",
     "rgb",
-    "cli"
+    "cli",
+    "style",
+    "styles"
   ],
   "author": "Haikal",
   "license": "ISC",
