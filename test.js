@@ -2,8 +2,8 @@ const styler = require("./");
 
 const x = style({
   text: "Hello world!",
-  color: "banana",
-  textStyle: ["inverse", "bold","underline"],
+  color: "lochmara",
+  textStyle: ["inverse", "bold", "underline"],
 });
 
 console.log(x);
