@@ -30,13 +30,17 @@ global.style = (x) => {
     } else if (typeof x.textStyle === "string") text_style = st(x.textStyle);
   }
   let text = isArr(x.text)
-    ? x.text.join(`${"\x1b[0m" + line + background + color + text_style}`)
+    ? x.text.join(`\x1b[0m${line}${background}${color}${text_style}`)
     : x.text || "";
 
   return `${background}${color}${text_style}${text}\x1b[0m`;
 };
 
 module.exports = {
+  sc,
+  st,
+  rgb,
+  br,
   style,
   example,
 };

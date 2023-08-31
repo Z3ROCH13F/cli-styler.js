@@ -4,11 +4,16 @@ const x = style({
   text: [
     "Hello world!",
     "Hello dunia",
-    style({ text: "lol", color: "green", textStyle: "italic" }),
+    style({
+      text: ["lol1", "lol2"],
+      color: "green",
+      textStyle: ["italic", "bold"],
+    }),
     "masbro",
   ],
   color: "tomato",
-  textStyle: "underline", // bug underline text = lol
+  line: "nline",
+  textStyle: "underline", // bug underline text = lol1
 });
 
 console.log(x);
