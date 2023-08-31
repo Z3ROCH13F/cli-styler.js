@@ -1,7 +1,6 @@
 const { sc } = require("./lib/select-color"),
   { st } = require("./lib/style-text"),
   { ln } = require("./lib/line"),
-  { warning } = require("./lib/func"),
   { example } = require("./lib/example");
 
 const Mf = (x) => Math.floor(x),
@@ -12,7 +11,6 @@ const Mf = (x) => Math.floor(x),
 global.style = (x) => {
   let text_style = "";
   let line = ln(x.line) || ln("inline");
-  let text = isArr(x.text) ? x.text.join(line) : x.text || "";
 
   let color = rgb(
     ...(x.color && isArr(x.color) && x.color.length === 3
@@ -26,17 +24,19 @@ global.style = (x) => {
   );
 
   if (x.textStyle) {
-    // combination 2 or more text style ( BAD ENGLISH )
+    // combination 2 or more text style
     if (isArr(x.textStyle)) {
       text_style = x.textStyle.map(st).join("");
     } else if (typeof x.textStyle === "string") text_style = st(x.textStyle);
   }
+  let text = isArr(x.text)
+    ? x.text.join(`${"\x1b[0m" + line + background + color + text_style}`)
+    : x.text || "";
 
   return `${background}${color}${text_style}${text}\x1b[0m`;
 };
 
 module.exports = {
   style,
-  warning,
   example,
 };

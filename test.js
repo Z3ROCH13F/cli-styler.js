@@ -1,20 +1,14 @@
 const styler = require("./");
 
 const x = style({
-  text: "Hello world!",
+  text: [
+    "Hello world!",
+    "Hello dunia",
+    style({ text: "lol", color: "green", textStyle: "italic" }),
+    "masbro",
+  ],
   color: "tomato",
-  textStyle: ["inverse", "bold", "underline"],
+  textStyle: "underline", // bug underline text = lol
 });
 
 console.log(x);
-
-/*
-
-style ->
- text -> "hello1" || Array("hello1","hello2") || ["hell1","hello2"],
- background -> 3 rgb Array || name color example "red",
- color,
- textStyle,
- line
-
-*/
