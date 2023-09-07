@@ -10,30 +10,33 @@ const Mf = (x) => Math.floor(x),
 
 global.style = (x) => {
   let text_style = "";
-  let line = ln(x.line) || ln("inline");
+  let line = ln(x.line || "inline");
 
   let color = rgb(
-    ...(x.color && isArr(x.color) && x.color.length === 3
+    ...(isArr(x.color) && x.color.length === 3
       ? x.color
-      : sc(x.color) || sc("white"))
+      : sc(x.color || "white"))
   );
   let background = br(
-    ...(x.background && isArr(x.background) && x.background.length === 3
+    ...(isArr(x.background) && x.background.length === 3
       ? x.background
-      : sc(x.background) || sc("black"))
+      : sc(x.background || "black"))
   );
 
-  if (x.textStyle) {
-    // combination 2 or more text style
-    if (isArr(x.textStyle)) {
-      text_style = x.textStyle.map(st).join("");
-    } else if (typeof x.textStyle === "string") text_style = st(x.textStyle);
-  }
-  let text = isArr(x.text)
-    ? x.text.join(`\x1b[0m${line}${background}${color}${text_style}`)
-    : x.text || "";
+  // combination 2 or more text style
+  if (isArr(x.textStyle)) {
+    text_style = x.textStyle.map(st).join("");
+  } else if (typeof x.textStyle === "string") text_style = st(x.textStyle);
 
-  return `${background}${color}${text_style}${text}\x1b[0m`;
+  let text = isArr(x.text)
+    ? x.text
+        .map(
+          (t) => (t = `\x1b[0m${background}${color}${text_style}${t}\x1b[0m`)
+        )
+        .join(line)
+    : `\x1b[0m${background}${color}${text_style}${x.text || "LOL"}\x1b[0m`;
+
+  return text;
 };
 
 module.exports = {

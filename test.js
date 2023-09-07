@@ -1,4 +1,4 @@
-const styler = require("./");
+const styler = require("./"); // global
 
 const x = style({
   text: [
@@ -6,14 +6,15 @@ const x = style({
     "Hello dunia",
     style({
       text: ["lol1", "lol2"],
-      color: "green",
-      textStyle: ["italic", "bold"],
+      color: "banana",
+      textStyle: ["italic", "bold", "strike"],
     }),
     "masbro",
   ],
   color: "tomato",
   line: "nline",
-  textStyle: "underline", // bug underline text = lol1
+  textStyle: "underline",
 });
 
+console.log(style({ text: 2023, color: "aqua" }));
 console.log(x);
