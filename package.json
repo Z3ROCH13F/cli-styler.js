@@ -1,12 +1,16 @@
 {
   "name": "cli-styler.js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Z3ROCH13F/cli-styler.js.git"
   },
   "keywords": [
     "terminal",
@@ -15,7 +19,8 @@
     "rgb",
     "cli",
     "style",
-    "styles"
+    "styles",
+    "termux"
   ],
   "author": "Haikal",
   "license": "ISC",
