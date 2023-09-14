@@ -11,8 +11,17 @@ npm install cli-styler.js
 ```
 
 ```js
-
 const styler = require("cli-styler.js");
+
+/*
+style() Or styler.style()
+
+And use Object.log() to console.log()
+
+Example:
+let y = style({text: "Hello world"}) // global
+console.log(y) || y.log() // Hello world
+*/
 
 const x = style({
   text: [
@@ -61,12 +70,17 @@ styler
 style({text: "Hello world"}) // Hello world
 style({text: ["Hello world", "Hello dunia"]}) // Hello world Hello dunia
 ```
-- textStyle
+- textStyle || ts
 ```js
+// textStyle
 style({text: "Power", textStyle: "bold"})
 style({text: "Power", textStyle: ["bold", "underline"]})
+
+// ts
+style({text: "my style", ts: ["bold", "inverse", "underline"]})
+
 /*
-List textStyle:
+List textStyle and ts:
 1. bold
 2. dim
 3. italic
@@ -81,10 +95,14 @@ List textStyle:
 style({text: 2023, color: [0, 200, 200]})
 style({text: 2024, color: "green"})
 ```
-- background
+- background || bg
 ```js
+// background
 style({text: 2023, background: [0, 255, 50]})
 style({text: 2024, background: "banana"})
+
+// bg
+style({text: "my background", bg: "banana"})
 ```
 - line
 ```js
@@ -125,7 +143,7 @@ style({text: ["arr1", "arr2"], line: "$"})
 - fixC
 - fixBg
 
-[**List all color**](/lib/select-color.js)
+[List all color](/lib/select-color.js)
 
 ## License
 
