@@ -10,6 +10,8 @@ const Mr = (x) => Math.round(x),
 
 global.style = (x = null) => {
   let text_style = "";
+  let bg = x?.bg ?? x?.background ?? "";
+  let ts = x?.ts ?? x?.textStyle;
   let line = ln(x?.line ?? "inline");
   let fixC = sc(x?.fixC) ?? sc("white");
   let fixBg = sc(x?.fixBg) ?? sc("black");
@@ -19,16 +21,12 @@ global.style = (x = null) => {
       ? x?.color
       : sc(x?.color) ?? fixC)
   );
-  let background = br(
-    ...(isArr(x?.background) && x.background.length === 3
-      ? x?.background
-      : sc(x?.background) ?? fixBg)
-  );
+  let background = br(...(isArr(bg) && bg.length === 3 ? bg : sc(bg) ?? fixBg));
 
   // combination 2 or more text style
-  if (isArr(x?.textStyle)) {
-    text_style = x.textStyle.map(st).join("");
-  } else if (typeof x?.textStyle === "string") text_style = st(x.textStyle);
+  if (isArr(ts)) {
+    text_style = ts.map(st).join("");
+  } else if (typeof ts === "string") text_style = st(ts);
 
   let text = isArr(x?.text)
     ? x.text
@@ -43,7 +41,7 @@ global.style = (x = null) => {
 
 Object.prototype.log = function () {
   console.log(this.valueOf());
-}; // ?
+};
 
 module.exports = {
   sc,

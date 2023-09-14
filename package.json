@@ -1,12 +1,12 @@
 {
   "name": "cli-styler.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "node test"
+    "test": "node /test"
   },
   "repository": {
     "type": "git",
