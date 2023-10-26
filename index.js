@@ -1,12 +1,11 @@
 const { sc } = require("./lib/select-color"),
   { st } = require("./lib/style-text"),
-  { ln } = require("./lib/line"),
-  { example } = require("./lib/example");
+  { ln } = require("./lib/line")
 
 const Mr = (x) => Math.round(x),
   isArr = (x) => Array.isArray(x),
-  rgb = (r, g, b) => `\x1b[38;2;${Mr(r)};${Mr(g)};${Mr(b)}m`, // text color
-  br = (r, g, b) => `\x1b[48;2;${Mr(r)};${Mr(g)};${Mr(b)}m`; // background color
+  rgb = (r, g, b) => `\x1b[38;2;${Mr(r)};${Mr(g)};${Mr(b)}m`,
+  br = (r, g, b) => `\x1b[48;2;${Mr(r)};${Mr(g)};${Mr(b)}m`;
 
 global.style = (x = null) => {
   let text_style = "";
@@ -23,7 +22,6 @@ global.style = (x = null) => {
   );
   let background = br(...(isArr(bg) && bg.length === 3 ? bg : sc(bg) ?? fixBg));
 
-  // combination 2 or more text style
   if (isArr(ts)) {
     text_style = ts.map(st).join("");
   } else if (typeof ts === "string") text_style = st(ts);
@@ -49,5 +47,4 @@ module.exports = {
   rgb,
   br,
   style,
-  example,
 };
