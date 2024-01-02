@@ -16,11 +16,11 @@ const styler = require("cli-styler.js");
 /*
 style() Or styler.style()
 
-And use Object.log() to console.log()
+And use Object.Log() or console.log()
 
 Example:
 let y = style({text: "Hello world"}) // global
-console.log(y) || y.log() // Hello world
+console.log(y) || y.Log() // Hello world
 */
 
 const x = style({
@@ -44,11 +44,11 @@ console.log(style({ text: 2023.9, color: "aqua" }));
 
 console.log(x);
 // or
-x.log();
+x.Log();
 
-style({ color: "butter", text: 0 }).log();
+style({ color: "butter", text: 0 }).Log();
 // green typo but auto fix white or fixC
-style({ color: "gree", text: "end", background: "lol", fixC: "blue" }).log();
+style({ color: "gree", text: "end", background: "lol", fixC: "blue" }).Log();
 
 styler
   .style({
@@ -56,12 +56,32 @@ styler
     color: [Math.random() * 255, Math.random() * 255, Math.random() * 255],
     textStyle: ["bold", "inverse"],
   })
-  .log();
+  .Log();
 
-"Hello world".log();
+"Hello world".Log();
 
-[0, 1, 2, 3].log();
+[0, 1, 2, 3].Log();
 
+```
+## styleR function
+```js
+let x = styleR(
+    "<bold>Hello <ul color:red>World<@end>",
+    "<bold color: banana&bg: (200,0,0)>New <ul bg: purple&color:blue>2024<@end>"
+); // global
+
+x.forEach(y => console.log(y)) // use looping to print it out
+
+This is for style text <bold> and if typo or not found in lib/style-text.js then that will be empty ""
+
+In text style have 3 choices:
+1. color // for text color and you can also use (r,g,b) // (255,0,0)
+2. bg // for background color and (r,g,b)
+3. line // for set position x and y using (x, y)
+
+This 2 function just \x1b[0m but have to name
+1. <@mid>
+2. <@end>
 ```
 
 ## style function
