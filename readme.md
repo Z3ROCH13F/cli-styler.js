@@ -16,10 +16,10 @@ const styler = require("cli-styler.js");
 /*
 style() Or styler.style()
 
-And use Object.Log() or console.log()
+Use Object.Log() or console.log() to print it out
 
 Example:
-let y = style({text: "Hello world"}) // global
+let y = style({text: "Hello world", color: "cyan"}) // global
 console.log(y) || y.Log() // Hello world
 */
 
@@ -60,8 +60,6 @@ styler
 
 "Hello world".Log();
 
-[0, 1, 2, 3].Log();
-
 ```
 ## styleR function
 ```js
@@ -70,18 +68,29 @@ let x = styleR(
     "<bold color: banana&bg: (200,0,0)>New <ul bg: purple&color:blue>2024<@end>"
 ); // global
 
-x.forEach(y => console.log(y)) // use looping to print it out
+console.log(x)
 
 This is for style text <bold> and if typo or not found in lib/style-text.js then that will be empty ""
 
+/*
 In text style have 3 choices:
 1. color // for text color and you can also use (r,g,b) // (255,0,0)
 2. bg // for background color and (r,g,b)
 3. line // for set position x and y using (x, y)
 
-This 2 function just \x1b[0m but have to name
+This 2 function just \x1b[0m but have two name
 1. <@mid>
 2. <@end>
+
+List tag style-text use <name-tag-style>:
+1. bold
+2. ul // or underline
+3. dim
+4. italic
+5. blink // my terminal does not support that(blink), and idk that will work for you or not (-_-)
+6. inverse
+7. strike
+*/
 ```
 
 ## style function

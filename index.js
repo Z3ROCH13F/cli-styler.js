@@ -43,24 +43,23 @@ global.style = (x = null) => {
 };
 
 global.styleR = function (...arr) {
+    const regMatchRGB = /\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/;
     let out = [];
     for (let i of arr) {
         var text = i.split(/\r?\n/);
         for (let j = 0; j < text.length; j++) {
             text[j] = text[j].replace(/<([a-z]+)>/gi, (_, type) => {
-                return st(type);
+                return st(type) || _;
             });
             text[j] = text[j].replace(
-                /<([a-z]+)\s*(.+?)>/gi,
+                /<([a-z]+)\s(.+?)>/gi,
                 (_, type, sett) => {
                     var setup = sett.split("&");
                     for (let k = 0; k < setup.length; k++) {
                         setup[k] = setup[k].replace(
                             /\s*color\s*:\s*((.+?)+)/gi,
                             (_, color) => {
-                                let reg = color.match(
-                                    /\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/
-                                );
+                                let reg = color.match(regMatchRGB);
                                 color = reg
                                     ? [
                                           parseInt(reg[1]),
@@ -81,9 +80,7 @@ global.styleR = function (...arr) {
                         setup[k] = setup[k].replace(
                             /\s*bg\s*:\s*((.+?)+)/gi,
                             (_, color) => {
-                                let reg = color.match(
-                                    /\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/
-                                );
+                                let reg = color.match(regMatchRGB);
                                 color = reg
                                     ? [
                                           parseInt(reg[1]),
@@ -107,13 +104,12 @@ global.styleR = function (...arr) {
                                 let reg = pos.match(
                                     /\(\s*(\d+)\s*,\s*(\d+)\s*\)/
                                 );
-                                let xy = [parseInt(reg[1]),parseInt(reg[2])];
+                                let xy = [parseInt(reg[1]), parseInt(reg[2])];
                                 return "\x1b[" + xy[0] + ";" + xy[1] + "H";
                             }
                         );
                     }
-
-                    return setup.join("") + st(type);
+                    return st(type) ? setup.join("") + st(type) : _;
                 }
             );
             text[j] = text[j].replace(/<@mid>/gi, "\x1b[0m");
@@ -121,7 +117,7 @@ global.styleR = function (...arr) {
         }
         out.push(text.join("\n"));
     }
-    return out;
+    return out.join("\n");
 };
 
 Object.prototype.Log = function () {
