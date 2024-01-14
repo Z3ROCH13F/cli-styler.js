@@ -14,12 +14,10 @@ npm install cli-styler.js
 const styler = require("cli-styler.js");
 
 /*
-style() Or styler.style()
-
 Use Object.Log() or console.log() to print it out
 
 Example:
-let y = style({text: "Hello world", color: "cyan"}) // global
+let y = styler.style({text: "Hello world", color: "cyan"})
 console.log(y) || y.Log() // Hello world
 */
 
@@ -40,15 +38,12 @@ const x = style({
 });
 
 console.log(styler.style()); // text = LOL
-console.log(style({ text: 2023.9, color: "aqua" }));
 
 console.log(x);
 // or
 x.Log();
 
-style({ color: "butter", text: 0 }).Log();
-// green typo but auto fix white or fixC
-style({ color: "gree", text: "end", background: "lol", fixC: "blue" }).Log();
+styler.style({ color: "butter", text: 0 }).Log();
 
 styler
   .style({
@@ -59,7 +54,6 @@ styler
   .Log();
 
 "Hello world".Log();
-
 ```
 ## styleR function
 ```js
@@ -69,8 +63,6 @@ let x = styleR(
 ); // global
 
 console.log(x)
-
-This is for style text <bold> and if typo or not found in lib/style-text.js then that will be empty ""
 
 /*
 In text style have 3 choices:
@@ -96,17 +88,19 @@ List tag style-text use <name-tag-style>:
 ## style function
 - text
 ```js
-style({text: "Hello world"}) // Hello world
-style({text: ["Hello world", "Hello dunia"]}) // Hello world Hello dunia
+const styler = require("cli-styler.js")
+styler.style({text: "Hello world"}) // Hello world
+styler.style({text: ["Hello world", "Hello dunia"]}) // Hello world Hello dunia
 ```
 - textStyle || ts
 ```js
+const styler = require("cli-styler.js")
 // textStyle
-style({text: "Power", textStyle: "bold"})
-style({text: "Power", textStyle: ["bold", "underline"]})
+styler.style({text: "Power", textStyle: "bold"})
+styler.style({text: "Power", textStyle: ["bold", "underline"]})
 
 // ts
-style({text: "my style", ts: ["bold", "inverse", "underline"]})
+styler.style({text: "my style", ts: ["bold", "inverse", "underline"]})
 
 /*
 List textStyle and ts:
@@ -121,20 +115,25 @@ List textStyle and ts:
 ```
 - color
 ```js
-style({text: 2023, color: [0, 200, 200]})
-style({text: 2024, color: "green"})
+const styler = require("cli-styler.js")
+
+styler.style({text: 2023, color: [0, 200, 200]})
+styler.style({text: 2024, color: "green"})
 ```
 - background || bg
 ```js
+const styler = require("cli-styler.js")
 // background
-style({text: 2023, background: [0, 255, 50]})
-style({text: 2024, background: "banana"})
+styler.style({text: 2023, background: [0, 255, 50]})
+styler.style({text: 2024, background: "banana"})
 
 // bg
-style({text: "my background", bg: "banana"})
+styler.style({text: "my background", bg: "banana"})
 ```
 - line
 ```js
+const styler = require("cli-styler.js")
+
 /*
 List line:
 1. inline // normal
@@ -145,32 +144,30 @@ List line:
 Output:
 arr1 arr2
 */
-style({text: ["arr1", "arr2"], line: "inline"})
+styler.style({text: ["arr1", "arr2"], line: "inline"})
 
 
 /*
 Output:
 arr1 arr2
 */
-style({text: ["arr1", "arr2"]})
+styler.style({text: ["arr1", "arr2"]})
 
 /*
 Output:
 arr1
 arr2
+styler.style({text: ["arr1", "arr2"], line: "nline"})
 */
-style({text: ["arr1", "arr2"], line: "nline"})
 
 /*
 Typo line
 Output:
 arr1$arr2
 */
-style({text: ["arr1", "arr2"], line: "$"})
+styler.style({text: ["arr1", "arr2"], line: "$"})
 
 ```
-- fixC
-- fixBg
 
 [List all color](/lib/select-color.js)
 

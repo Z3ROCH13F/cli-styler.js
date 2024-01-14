@@ -2,51 +2,66 @@ const { sc } = require("./lib/select-color");
 const { st } = require("./lib/style-text");
 const { ln } = require("./lib/line");
 
-const Mr = x => Math.round(x);
-const isArr = x => Array.isArray(x);
-const rgb = (r, g, b) => `\x1b[38;2;${Mr(r)};${Mr(g)};${Mr(b)}m`;
-const br = (r, g, b) => `\x1b[48;2;${Mr(r)};${Mr(g)};${Mr(b)}m`;
+const {
+    ArrayIsArray,
+    RgbToColorAnsi,
+    RgbToBackgroundColorAnsi
+} = require("./utils");
 
-global.style = (x = null) => {
-    let text_style = "";
-    let bg = x?.bg ?? x?.background ?? "";
-    let ts = x?.ts ?? x?.textStyle;
-    let line = ln(x?.line ?? "inline");
-    let fixC = sc(x?.fixC) ?? sc("white");
-    let fixBg = sc(x?.fixBg) ?? sc("black");
+function style(customStyle = null) {
+    var space = {};
+    let textColor = customStyle.color;
+    let backgroundColor = customStyle.bg ?? customStyle.background;
+    let textStyle = customStyle.ts ?? customStyle.textStyle;
+    let line = ln(customStyle.line);
 
-    let color = rgb(
-        ...(isArr(x?.color) && x.color.length === 3
-            ? x?.color
-            : sc(x?.color) ?? fixC)
-    );
-    let background = br(
-        ...(isArr(bg) && bg.length === 3 ? bg : sc(bg) ?? fixBg)
-    );
+    if (textColor) {
+        if (ArrayIsArray(textColor)) {
+            space.color = RgbToColorAnsi(...textColor);
+        } else if (typeof textColor === "string") {
+            if (sc(textColor)) {
+                space.color = RgbToColorAnsi(...sc(textColor));
+            } else space.color = "";
+        }
+    } else space.color = "";
 
-    if (isArr(ts)) {
-        text_style = ts.map(st).join("");
-    } else if (typeof ts === "string") text_style = st(ts);
+    if (backgroundColor) {
+        if (ArrayIsArray(backgroundColor)) {
+            space.background = RgbToBackgroundColorAnsi(...backgroundColor);
+        } else if (typeof backgroundColor === "string") {
+            if (sc(backgroundColor)) {
+                space.background = RgbToBackgroundColorAnsi(
+                    ...sc(backgroundColor)
+                );
+            } else space.background = "";
+        }
+    } else space.background = "";
 
-    let text = isArr(x?.text)
-        ? x.text
+    if (ArrayIsArray(textStyle)) {
+        space.textStyle = textStyle.map(st).join("");
+    } else if (typeof textStyle === "string") {
+        space.textStyle = st(textStyle) || "";
+    } else space.textStyle = "";
+
+    space.text = ArrayIsArray(customStyle.text)
+        ? customStyle.text
               .map(
                   t =>
-                      (t = `\x1b[0m${background}${color}${text_style}${t}\x1b[0m`)
+                      (t = `\x1b[0m${space.background}${space.color}${space.textStyle}${t}\x1b[0m`)
               )
               .join(line)
-        : `\x1b[0m${background}${color}${text_style}${
-              x?.text ?? "2024"
+        : `\x1b[0m${space.background}${space.color}${space.textStyle}${
+              customStyle.text ?? "2024"
           }\x1b[0m`;
+    return space.text;
+}
 
-    return text;
-};
-
-global.styleR = function (...arr) {
+function styleR(...arr) {
     const regMatchRGB = /\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/;
     let out = [];
     for (let i of arr) {
         var text = i.split(/\r?\n/);
+
         for (let j = 0; j < text.length; j++) {
             text[j] = text[j].replace(/<([a-z]+)>/gi, (_, type) => {
                 return st(type) || _;
@@ -61,15 +76,11 @@ global.styleR = function (...arr) {
                             (_, color) => {
                                 let reg = color.match(regMatchRGB);
                                 color = reg
-                                    ? [
-                                          parseInt(reg[1]),
-                                          parseInt(reg[2]),
-                                          parseInt(reg[3])
-                                      ]
+                                    ? [reg[1] | 0, reg[2] | 0, reg[3] | 0]
                                     : color;
 
-                                return rgb(
-                                    ...(isArr(color)
+                                return RgbToColorAnsi(
+                                    ...(ArrayIsArray(color)
                                         ? color
                                         : sc(color) || sc("white"))
                                 );
@@ -82,14 +93,10 @@ global.styleR = function (...arr) {
                             (_, color) => {
                                 let reg = color.match(regMatchRGB);
                                 color = reg
-                                    ? [
-                                          parseInt(reg[1]),
-                                          parseInt(reg[2]),
-                                          parseInt(reg[3])
-                                      ]
+                                    ? [reg[1] | 0, reg[2] | 0, reg[3] | 0]
                                     : color;
-                                return br(
-                                    ...(isArr(color)
+                                return RgbToBackgroundColorAnsi(
+                                    ...(ArrayIsArray(color)
                                         ? color
                                         : sc(color) || sc("black"))
                                 );
@@ -104,7 +111,7 @@ global.styleR = function (...arr) {
                                 let reg = pos.match(
                                     /\(\s*(\d+)\s*,\s*(\d+)\s*\)/
                                 );
-                                let xy = [parseInt(reg[1]), parseInt(reg[2])];
+                                let xy = [reg[1] | 0, reg[2] | 0];
                                 return "\x1b[" + xy[0] + ";" + xy[1] + "H";
                             }
                         );
@@ -118,7 +125,7 @@ global.styleR = function (...arr) {
         out.push(text.join("\n"));
     }
     return out.join("\n");
-};
+}
 
 Object.prototype.Log = function () {
     console.log(this.valueOf());
@@ -127,8 +134,6 @@ Object.prototype.Log = function () {
 module.exports = {
     sc,
     st,
-    rgb,
-    br,
     style,
     styleR
 };
