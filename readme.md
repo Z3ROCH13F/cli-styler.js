@@ -33,7 +33,6 @@ const x = style({
     "masbro",
   ],
   color: "tomato",
-  line: "nline",
   textStyle: "underline",
 });
 
@@ -66,8 +65,8 @@ console.log(x)
 
 /*
 In text style have 3 choices:
-1. color // for text color and you can also use (r,g,b) // (255,0,0)
-2. bg // for background color and (r,g,b)
+1. color // for text color and you can also use (r,g,b) // (255,0,0) or hex
+2. bg // for background color and (r,g,b) or hex Example: #fb3600
 3. line // for set position x and y using (x, y)
 
 This 2 function just \x1b[0m but have two name
@@ -119,6 +118,7 @@ const styler = require("cli-styler.js")
 
 styler.style({text: 2023, color: [0, 200, 200]})
 styler.style({text: 2024, color: "green"})
+styler.style({text: 2024, color: "#fb3600"})
 ```
 - background || bg
 ```js
@@ -126,6 +126,7 @@ const styler = require("cli-styler.js")
 // background
 styler.style({text: 2023, background: [0, 255, 50]})
 styler.style({text: 2024, background: "banana"})
+styler.style({text: 2024, background: "#fb3600"})
 
 // bg
 styler.style({text: "my background", bg: "banana"})

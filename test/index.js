@@ -1,23 +1,9 @@
 const styler = require("../");
+const utils = require("../utils/");
 
-styler
-    .style({
-        text: "Hello world",
-        line: "nline",
-        color: "cyan",
-        ts: ["bold", "ul"],
-        background: [200, 20, 50]
-    })
-    .Log();
+let hex = "#f5366e";
+console.log(utils.RgbToColorAnsi(...utils.HexToRgb(hex)) + "lol");
 
-styler
-    .styleR("<bold color: (0,200,200)&bg: orange><ul>hello dunia<@end>")
-    .Log();
+styler.style({ text: "Hello Dunia!", color: "banana", bg: "#1466bc" }).Log();
 
-styler
-    .style({
-        text: "Power cli-styler.js",
-        color: [Math.random() * 255, Math.random() * 255, Math.random() * 255],
-        textStyle: ["bold", "inverse"]
-    })
-    .Log();
+styler.styleR("<bold color: red &bg: cyan>Hello Dunia 2024<@end>").Log();

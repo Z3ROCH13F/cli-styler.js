@@ -5,11 +5,13 @@ const { ln } = require("./lib/line");
 const {
     ArrayIsArray,
     RgbToColorAnsi,
-    RgbToBackgroundColorAnsi
+    RgbToBackgroundColorAnsi,
+    IsHex,
+    HexToRgb
 } = require("./utils");
 
-function style(customStyle = null) {
-    var space = {};
+function style(customStyle = {}) {
+    let space = {};
     let textColor = customStyle.color;
     let backgroundColor = customStyle.bg ?? customStyle.background;
     let textStyle = customStyle.ts ?? customStyle.textStyle;
@@ -19,7 +21,9 @@ function style(customStyle = null) {
         if (ArrayIsArray(textColor)) {
             space.color = RgbToColorAnsi(...textColor);
         } else if (typeof textColor === "string") {
-            if (sc(textColor)) {
+            if (IsHex(textColor)) {
+                space.color = RgbToColorAnsi(...HexToRgb(textColor));
+            } else if (sc(textColor)) {
                 space.color = RgbToColorAnsi(...sc(textColor));
             } else space.color = "";
         }
@@ -29,7 +33,11 @@ function style(customStyle = null) {
         if (ArrayIsArray(backgroundColor)) {
             space.background = RgbToBackgroundColorAnsi(...backgroundColor);
         } else if (typeof backgroundColor === "string") {
-            if (sc(backgroundColor)) {
+            if (IsHex(backgroundColor)) {
+                space.background = RgbToBackgroundColorAnsi(
+                    ...HexToRgb(backgroundColor)
+                );
+            } else if (sc(backgroundColor)) {
                 space.background = RgbToBackgroundColorAnsi(
                     ...sc(backgroundColor)
                 );
@@ -77,11 +85,12 @@ function styleR(...arr) {
                                 let reg = color.match(regMatchRGB);
                                 color = reg
                                     ? [reg[1] | 0, reg[2] | 0, reg[3] | 0]
-                                    : color;
-
+                                    : color.trim();
                                 return RgbToColorAnsi(
                                     ...(ArrayIsArray(color)
                                         ? color
+                                        : IsHex(color)
+                                        ? HexToRgb(color)
                                         : sc(color) || sc("white"))
                                 );
                             }
@@ -94,16 +103,17 @@ function styleR(...arr) {
                                 let reg = color.match(regMatchRGB);
                                 color = reg
                                     ? [reg[1] | 0, reg[2] | 0, reg[3] | 0]
-                                    : color;
+                                    : color.trim();
                                 return RgbToBackgroundColorAnsi(
                                     ...(ArrayIsArray(color)
                                         ? color
+                                        : IsHex(color)
+                                        ? HexToRgb(color)
                                         : sc(color) || sc("black"))
                                 );
                             }
                         );
                     }
-
                     for (let k = 0; k < setup.length; k++) {
                         setup[k] = setup[k].replace(
                             /\s*line\s*:\s*((.+?)+)/gi,
