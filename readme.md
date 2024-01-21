@@ -36,11 +36,7 @@ const x = style({
   textStyle: "underline",
 });
 
-console.log(styler.style()); // text = LOL
-
-console.log(x);
-// or
-x.Log();
+console.log(x); // or x.Log();
 
 styler.style({ color: "butter", text: 0 }).Log();
 
@@ -83,7 +79,16 @@ List tag style-text use <name-tag-style>:
 7. strike
 */
 ```
+## styleP function
+```js
+const { styleP } = require("cli-styler.js");
 
+styleP().bold.banana.text("Hello world").end.Log()
+styleP().bold.banana.text("Hello world", "2024").end.Log()
+styleP().bold.banana.bgGreen.text("Hello world").end.Log()
+styleP().bold.banana.text("Hello")._.green.ul.text("World").end.Log()
+styleP().textR("<inverse color:red>lol") // textR function = styleR function
+```
 ## style function
 - text
 ```js
