@@ -21,41 +21,16 @@ let y = styler.style({text: "Hello world", color: "cyan"})
 console.log(y) || y.Log() // Hello world
 */
 
-const x = style({
-  text: [
-    "Hello world!",
-    "Hello dunia",
-    style({
-      text: ["lol1", "lol2"],
-      color: "banana",
-      textStyle: ["italic", "bold", "strike"],
-    }),
-    "masbro",
-  ],
-  color: "tomato",
-  textStyle: "underline",
-});
-
-console.log(x); // or x.Log();
-
-styler.style({ color: "butter", text: 0 }).Log();
-
-styler
-  .style({
-    text: "Power cli-styler.js",
-    color: [Math.random() * 255, Math.random() * 255, Math.random() * 255],
-    textStyle: ["bold", "inverse"],
-  })
-  .Log();
-
-"Hello world".Log();
+styler.style({ color: "butter", text: "Hello Dunia!" }).Log();
+styler.styleR("<bold color: #ba22b1>Hello masbro!").Log();
+styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log() // too long lol (-_-?)
 ```
 ## styleR function
 ```js
 let x = styleR(
     "<bold>Hello <ul color:red>World<@end>",
     "<bold color: banana&bg: (200,0,0)>New <ul bg: purple&color:blue>2024<@end>"
-); // global
+);
 
 console.log(x)
 
@@ -65,7 +40,7 @@ In text style have 3 choices:
 2. bg // for background color and (r,g,b) or hex Example: #fb3600
 3. line // for set position x and y using (x, y)
 
-This 2 function just \x1b[0m but have two name
+This 2 function just \x1b[0m but have two different name
 1. <@mid>
 2. <@end>
 
@@ -83,11 +58,11 @@ List tag style-text use <name-tag-style>:
 ```js
 const { styleP } = require("cli-styler.js");
 
-styleP().bold.banana.text("Hello world").end.Log()
-styleP().bold.banana.text("Hello world", "2024").end.Log()
-styleP().bold.banana.bgGreen.text("Hello world").end.Log()
-styleP().bold.banana.text("Hello")._.green.ul.text("World").end.Log()
-styleP().textR("<inverse color:red>lol") // textR function = styleR function
+styleP.bold.banana.text("Hello world").end.Log()
+styleP.bold.banana.text("Hello world", "2024").end.Log()
+styleP.bold.banana.bgGreen.text("Hello world").end.Log()
+styleP.bold.ul.banana.text("Hello")._.green.ul.text("World").end.Log()
+styleP.textR("<inverse color:red>lol") // textR function = styleR function
 ```
 ## style function
 - text
@@ -99,11 +74,9 @@ styler.style({text: ["Hello world", "Hello dunia"]}) // Hello world Hello dunia
 - textStyle || ts
 ```js
 const styler = require("cli-styler.js")
-// textStyle
+// textStyle or ts
 styler.style({text: "Power", textStyle: "bold"})
 styler.style({text: "Power", textStyle: ["bold", "underline"]})
-
-// ts
 styler.style({text: "my style", ts: ["bold", "inverse", "underline"]})
 
 /*
@@ -128,12 +101,10 @@ styler.style({text: 2024, color: "#fb3600"})
 - background || bg
 ```js
 const styler = require("cli-styler.js")
-// background
+// background or bg
 styler.style({text: 2023, background: [0, 255, 50]})
 styler.style({text: 2024, background: "banana"})
 styler.style({text: 2024, background: "#fb3600"})
-
-// bg
 styler.style({text: "my background", bg: "banana"})
 ```
 - line
@@ -152,27 +123,12 @@ arr1 arr2
 */
 styler.style({text: ["arr1", "arr2"], line: "inline"})
 
-
-/*
-Output:
-arr1 arr2
-*/
-styler.style({text: ["arr1", "arr2"]})
-
 /*
 Output:
 arr1
 arr2
+*/
 styler.style({text: ["arr1", "arr2"], line: "nline"})
-*/
-
-/*
-Typo line
-Output:
-arr1$arr2
-*/
-styler.style({text: ["arr1", "arr2"], line: "$"})
-
 ```
 
 [List all color](/lib/select-color.js)
