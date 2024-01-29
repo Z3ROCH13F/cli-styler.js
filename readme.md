@@ -1,10 +1,10 @@
-# CLI Styler
+# cli-styler.js
 
-CLI Styler is a Node.js library that provides functions for styling text and background colors in the terminal.
+cli-styler.js is a Node.js library that provides functions for styling text and background colors in the terminal.
 
 ## Installation
 
-You can install CLI Styler using npm:
+You can install cli-styler.js using npm:
 
 ```bash
 npm install cli-styler.js
@@ -113,21 +113,11 @@ const styler = require("cli-styler.js")
 
 /*
 List line:
-1. inline // normal
+1. inline // " "
 2. nline
 */
 
-/*
-Output:
-arr1 arr2
-*/
 styler.style({text: ["arr1", "arr2"], line: "inline"})
-
-/*
-Output:
-arr1
-arr2
-*/
 styler.style({text: ["arr1", "arr2"], line: "nline"})
 ```
 
