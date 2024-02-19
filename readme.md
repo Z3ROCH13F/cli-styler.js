@@ -7,7 +7,7 @@ cli-styler.js is a Node.js library that provides functions for styling text and 
 You can install cli-styler.js using npm:
 
 ```bash
-npm install cli-styler.js
+npm i cli-styler.js
 ```
 
 ```js
@@ -23,7 +23,7 @@ console.log(y) || y.Log() // Hello world
 
 styler.style({ color: "butter", text: "Hello Dunia!" }).Log();
 styler.styleR("<bold color: #ba22b1>Hello masbro!").Log();
-styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log() // too long lol (-_-?)
+styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log()
 ```
 ## styleR function
 ```js
@@ -49,7 +49,7 @@ List tag style-text use <name-tag-style>:
 2. ul // or underline
 3. dim
 4. italic
-5. blink // my terminal does not support that(blink), and idk that will work for you or not (-_-)
+5. blink // my terminal does not support that(blink), and idk that will work for you (-_-)
 6. inverse
 7. strike
 */
@@ -114,15 +114,12 @@ const styler = require("cli-styler.js")
 /*
 List line:
 1. inline // " "
-2. nline
+2. nline // "\n"
 */
 
 styler.style({text: ["arr1", "arr2"], line: "inline"})
 styler.style({text: ["arr1", "arr2"], line: "nline"})
 ```
-
-[List all color](/lib/select-color.js)
-
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.

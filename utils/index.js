@@ -8,7 +8,7 @@ module.exports = {
     }
     return boolOut;
   },
-  // this r|0 will convert any number into int
+  // this will convert any number into int
   RgbToColorAnsi: (r, g, b) => `\x1b[38;2;${r | 0};${g | 0};${b | 0}m`,
 
   RgbToBackgroundColorAnsi: (r, g, b) =>
