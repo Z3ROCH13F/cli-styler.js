@@ -1,24 +1,15 @@
 module.exports = {
-  ArrayIsArray: function (len, inputArray) {
-    let boolOut = false;
-    if (len && inputArray) {
-      if (typeof len === "number" && len === inputArray.length) {
-        Array.isArray(inputArray) ? (boolOut = true) : boolOut;
-      }
-    }
-    return boolOut;
+  ArrayIsArray: function (len, isArr) {
+    if (len && isArr && typeof len === "number" && len === isArr.length)
+      if (Array.isArray(isArr)) return true;
+    return false;
   },
-  // this will convert any number into int
   RgbToColorAnsi: (r, g, b) => `\x1b[38;2;${r | 0};${g | 0};${b | 0}m`,
-
-  RgbToBackgroundColorAnsi: (r, g, b) =>
-    `\x1b[48;2;${r | 0};${g | 0};${b | 0}m`,
+  RgbToBackgroundColorAnsi: (r, g, b) => `\x1b[48;2;${r | 0};${g | 0};${b | 0}m`,
 
   IsHex: str => /^#/.test(str),
-
   HexToRgb: function (hex) {
-    hex = hex.replace(/^#/, "");
-    hex = parseInt(hex, 16);
+    hex = parseInt(hex.replace(/^#/, ""), 16);
     return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
   }
 };

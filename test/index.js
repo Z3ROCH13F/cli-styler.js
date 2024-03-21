@@ -1,6 +1,5 @@
-const { style, styleR, styleP } = require("../");
+const { style, styleP, styleR } = require("../");
 
-styleP.bold.banana.text("Hello world lola")._n1;
-styleP.bold.color("#e23ad8").text("Hello world ", "2024").end.Log();
-
-styleR("<bold   color: (200, 20, 50)  ><ul>hello dunia<@end>").Log();
+style({ text: ["test1", "test2"], textStyle: ["b", "ul"],ln:"nline" }).Log();
+styleP.red.bold.bglol.text("yooo").e.Log();
+styleR("<bold color: (27,200,100)&bg:red><ul>hello dunia<@reset> lol").Log();

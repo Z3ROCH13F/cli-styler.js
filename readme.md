@@ -43,6 +43,7 @@ In text style have 3 choices:
 This 2 function just \x1b[0m but have two different name
 1. <@mid>
 2. <@end>
+3. <@reset>
 
 List tag style-text use <name-tag-style>:
 1. bold
