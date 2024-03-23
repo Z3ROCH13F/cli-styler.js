@@ -1,5 +1,6 @@
-const { style, styleP, styleR } = require("../");
+const { style, styleR } = require("../");
 
-style({ text: ["test1", "test2"], textStyle: ["b", "ul"],ln:"nline" }).Log();
-styleP.red.bold.bglol.text("yooo").e.Log();
-styleR("<bold color: (27,200,100)&bg:red><ul>hello dunia<@reset> lol").Log();
+console.clear();
+styleR("<?color: red&bg: banana>Test1<@reset>").Log();
+styleR("<?bg: #A8FDE0><inverse>Test2<@reset-bg>lol").Log();
+style({ text: "helo", styleText: ["ul", "b"] }).Log();
