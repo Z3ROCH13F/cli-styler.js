@@ -35,7 +35,7 @@ styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log()
 <dim>                 // set style text to dim
 <strike>              // set style text to strikethrough
 
-// set style without style text
+// set color, background color, and line without style text
 <?color: red>                  // set color to red
 <?color: red&bg: banana>       // set color to red and set background color to banana
 <?bg: banana&color: red>       // set background color to banana and set color to red
@@ -43,16 +43,29 @@ styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log()
 <?bg: #90278a>                 // set background color with hexadecimal
 <?color: (200,200,0)>          // set color with (r, g, b)
 <?color: #d105c1>              // set color with hexadecimal
-<?line: (1, 10)>               // set position line to x = 1 and y = 20
+<?line: (1, 10)>               // set position line to (x = 1, y = 10) or (columns = 1, rows = 10)
 
 // set style text, color, background color, and line
 <bold color: cyan>             // set style text to bold and set color to cyan
 
 // reset
-<@reset>                              // reset all style to default
+<@reset> or <@mid> or <@end>          // reset all style to default
 <@reset-color>                        // reset color to default
 <@reset-background> or <@reset-bg>    // reset background color to default
-<@reset-styleText> or <@reset-st>     // reset style text to default
+
+<@reset-styleText> or <@reset-st>     // reset style text bold, underline, blink, dim, inverse, hide, strikethrough
+
+<@reset-bold> or <@reset-b>           // reset style text bold
+<@reset-underline> or <@reset-ul>     // reset style text underline
+<@reset-italic> or <@reset-i>         // reset style text italic
+<@reset-blink>                        // reset style text blink
+<@reset-inverse>                      // reset style text inverse
+<@reset-hide>                         // reset style text hide
+<@reset-strike>                       // reset style text strikethrough
+
+// NOTE: <@reset-dim> and <@reset-b> will reset that same things (dim, bold)
+<@reset-dim>                          // reset style text dim and bold
+<@reset-dimb>                         // reset style text dim and set style text to bold
 */
 
 const { styleR } = require("cli-styler.js");
@@ -91,13 +104,13 @@ style({text: "foo", styleText: ["ul", "b"]}) // set text to "foo" and style text
 // set color
 style({text: "foo", color: "red"})         // set text to "foo" and color to red
 style({text: "foo", color: [0, 200, 200]}) // set text to "foo" and color to (r, g, b)
-style({text: "foo", color: #13d105})       // set text to "foo" and color to hexadecimal
+style({text: "foo", color: "#13d105"})     // set text to "foo" and color to "hexadecimal"
 
 // set background color
 // note use bg or background
 style({text: "foo", bg: "red"})         // set text to "foo" and background color to red
 style({text: "foo", bg: [250, 0, 200]}) // set text to "foo" and background color to (r, g, b)
-style({text: "foo", bg: #d10505})       // set text to "foo" and background color to hexadecimal
+style({text: "foo", bg: "#d10505"})     // set text to "foo" and background color to "hexadecimal"
 
 // set line if text is Array
 // note use line or ln
