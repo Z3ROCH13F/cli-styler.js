@@ -19,7 +19,7 @@ Use Object.Log() or console.log() to print it out
 
 styler.style({ color: "butter", text: "Hello Dunia!" }).Log();
 styler.styleR("<bold color: #ba22b1>Hello masbro!").Log();
-styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log()
+styler.styleP.bold.ul.green.text("Hello ... World").end.Log()
 ```
 ## styleR function
 ```js
@@ -49,7 +49,7 @@ styler.styleP.bold.ul.green.text("Hello ...").text("World").end.Log()
 <bold color: cyan>             // set style text to bold and set color to cyan
 
 // reset
-<@reset> or <@mid> or <@end>          // reset all style to default
+<@reset>                              // reset all style to default
 <@reset-color>                        // reset color to default
 <@reset-background> or <@reset-bg>    // reset background color to default
 
@@ -107,15 +107,15 @@ style({text: "foo", color: [0, 200, 200]}) // set text to "foo" and color to (r,
 style({text: "foo", color: "#13d105"})     // set text to "foo" and color to "hexadecimal"
 
 // set background color
-// note use bg or background
+// bg or background
 style({text: "foo", bg: "red"})         // set text to "foo" and background color to red
 style({text: "foo", bg: [250, 0, 200]}) // set text to "foo" and background color to (r, g, b)
 style({text: "foo", bg: "#d10505"})     // set text to "foo" and background color to "hexadecimal"
 
 // set line if text is Array
-// note use line or ln
-styler.style({text: ["foo", "bar"], line: "inline"}) // set text to "foo" "bar" and "foo bar" 
-styler.style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and "foo\nbar"
+// line or ln
+style({text: ["foo", "bar"], line: "inline"}) // set text to "foo" "bar" and "foo bar" 
+style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and "foo\nbar"
 */
 
 ```
