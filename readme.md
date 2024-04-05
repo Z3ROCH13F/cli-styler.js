@@ -119,6 +119,9 @@ style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and "fo
 */
 
 ```
+
+## See list all [color](https://z3roch13f.github.io/cli-styler.js/color) can you chose
+
 ## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
