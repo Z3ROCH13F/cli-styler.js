@@ -6,4 +6,8 @@ Object.prototype.Log = function () {
   console.log(this.valueOf());
 };
 
-module.exports = { style, styleR, styleP };
+module.exports = {
+  style,
+  styleR,
+  styleP,
+};

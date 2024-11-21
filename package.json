@@ -1,12 +1,13 @@
 {
-  "name": "cli-styler.js",
-  "version": "0.7.0",
+  "name": "cli-styler",
+  "version": "0.8.0",
   "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
+    "format": "prettier --write .",
     "test": "node /test"
   },
   "repository": {
