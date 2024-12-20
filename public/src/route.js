@@ -18,7 +18,10 @@ class Route {
       console.log(`%c> Handling request [ ${this.path} ]`, "color: yellow");
       this.request[this.path](new Response());
       console.log("%c> Ended route!!!", "color: red");
-    }
+    } else
+      new Response().send(
+        `<h1>CLIENT: 404</h1></br>query ?${this.search}=${this.path} is not found!`,
+      );
   }
 }
 

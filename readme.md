@@ -11,15 +11,15 @@ npm i cli-styler.js
 ```
 
 ```js
-const styler = require("cli-styler.js");
+const cli = require("cli-styler.js");
 
 /*
 Use Object.Log() or console.log() to print it out
 */
 
-styler.style({ color: "butter", text: "Hello Dunia!" }).Log();
-styler.styleR("<bold color: #ba22b1>Hello masbro!").Log();
-styler.styleP.bold.ul.green.text("Hello ... World").end.Log();
+cli.style({ color: "butter", text: "Hello Dunia!" }).Log();
+cli.styleR("<bold color: #ba22b1>Hello masbro!").Log();
+cli.styleP().bold.ul.green.text("Hello ... World").Log();
 ```
 
 ## styleR function
@@ -70,61 +70,60 @@ styler.styleP.bold.ul.green.text("Hello ... World").end.Log();
 
 // undo style text, color, background color
 <@undo-color>                       // undo color - 1 into previous color that you set
-<@undo-bg>                          // etc
-<@undo-st>                          // etc
+<@undo-bg>                          // undo background color - 1 into previous color that you set
+<@undo-st>                          // undo style text - 1 into previous color that you set
 */
 
-const { styleR } = require("cli-styler.js");
+const cli = require("cli-styler.js");
 
 // Example
-styleR("<bold color: green><inverse>Hello, World!<@reset>").Log();
+cli.styleR("<bold color: green><inverse>Hello, World!<@reset>").Log();
 ```
 
 ## styleP function
 
 ```js
-const { styleP } = require("cli-styler.js");
+const cli = require("cli-styler.js");
 
-styleP.bold.banana.text("Hello world").end.Log();
-styleP.bold.banana.text("Hello world", "2024").end.Log();
-styleP.bold.banana.bgGreen.text("Hello world").end.Log();
-styleP.bold.ul.banana.text("Hello")._.green.ul.text("World").end.Log();
-styleP.textR("<inverse color:red>lol");
+cli.styleP().bold.banana.text("Hello world").Log();
+cli.styleP().bold.banana.text("Hello world", "2024").Log();
+cli.styleP().bold.banana.bgGreen.text("Hello world").Log();
+cli.styleP().textR("<inverse color:red>lol").Log();
 ```
 
 ## style function
 
 ```js
-const { style } = require("cli-styler.js");
+const cli = require("cli-styler.js");
 
 /*
 // Explanation and Example
 
 // set text
-style({text: "hello, world"})  // set text to "hello, world"
-style({text: ["foo", "bar"]})  // set text to "foo bar"
+cli.style({text: "hello, world"})  // set text to "hello, world"
+cli.style({text: ["foo", "bar"]})  // set text to "foo bar"
 
 // set style text
-style({text: "foo", st: "ul"})               // set text to "foo" and style text to underline
-style({text: "foo", st: ["ul", "b"]})        // set text to "foo" and style text to underline and bold
-style({text: "foo", styleText: "ul"})        // set text to "foo" and style text to underline
-style({text: "foo", styleText: ["ul", "b"]}) // set text to "foo" and style text to underline and bold
+cli.style({text: "foo", st: "ul"})               // set text to "foo" and style text to underline
+cli.style({text: "foo", st: ["ul", "b"]})        // set text to "foo" and style text to underline and bold
+cli.style({text: "foo", styleText: "ul"})        // set text to "foo" and style text to underline
+cli.style({text: "foo", styleText: ["ul", "b"]}) // set text to "foo" and style text to underline and bold
 
 // set color
-style({text: "foo", color: "red"})         // set text to "foo" and color to red
-style({text: "foo", color: [0, 200, 200]}) // set text to "foo" and color to (r, g, b)
-style({text: "foo", color: "#13d105"})     // set text to "foo" and color to "hexadecimal"
+cli.style({text: "foo", color: "red"})         // set text to "foo" and color to red
+cli.style({text: "foo", color: [0, 200, 200]}) // set text to "foo" and color to (r, g, b)
+cli.style({text: "foo", color: "#13d105"})     // set text to "foo" and color to "hexadecimal"
 
 // set background color
 // bg or background
-style({text: "foo", bg: "red"})         // set text to "foo" and background color to red
-style({text: "foo", bg: [250, 0, 200]}) // set text to "foo" and background color to (r, g, b)
-style({text: "foo", bg: "#d10505"})     // set text to "foo" and background color to "hexadecimal"
+cli.style({text: "foo", bg: "red"})         // set text to "foo" and background color to red
+cli.style({text: "foo", bg: [250, 0, 200]}) // set text to "foo" and background color to (r, g, b)
+cli.style({text: "foo", bg: "#d10505"})     // set text to "foo" and background color to "hexadecimal"
 
 // set line if text is Array
 // line or ln
-style({text: ["foo", "bar"], line: "inline"}) // set text to "foo" "bar" and "foo bar" 
-style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and "foo\nbar"
+cli.style({text: ["foo", "bar"], line: "inline"}) // set text to "foo" "bar" and "foo bar" 
+cli.style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and "foo\nbar"
 */
 ```
 

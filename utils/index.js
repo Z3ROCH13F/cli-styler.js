@@ -1,4 +1,9 @@
 module.exports = {
+  /**
+   * @param {number} len
+   * @param {number[]} inp
+   * @returns {boolean}
+   */
   ArrayIsArray(len, inp) {
     if (
       len &&

@@ -1,6 +1,6 @@
 {
   "name": "cli-styler",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "test": "node /test"
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -27,9 +27,10 @@
   ],
   "author": "Haikal",
   "license": "ISC",
-  "description": "cli-styler.js is a Node.js library that provides functions for styling text and background colors in the terminal.",
+  "description": "style your terminal.",
   "bugs": {
     "url": "https://github.com/Z3ROCH13F/cli-styler.js/issues"
   },
-  "homepage": "https://github.com/Z3ROCH13F/cli-styler.js#readme.md"
+  "homepage": "https://github.com/Z3ROCH13F/cli-styler.js#readme.md",
+  "devDependencies": {}
 }
