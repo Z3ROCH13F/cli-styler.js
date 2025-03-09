@@ -1,36 +1,37 @@
 {
-  "name": "cli-styler",
-  "version": "0.9.0",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
-  "scripts": {
-    "format": "prettier --write .",
-    "test": "node --test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Z3ROCH13F/cli-styler.js.git"
-  },
-  "keywords": [
-    "terminal",
-    "color",
-    "colors",
-    "rgb",
-    "cli",
-    "style",
-    "styler",
-    "termux",
-    "2024"
-  ],
-  "author": "Haikal",
-  "license": "ISC",
-  "description": "style your terminal.",
-  "bugs": {
-    "url": "https://github.com/Z3ROCH13F/cli-styler.js/issues"
-  },
-  "homepage": "https://github.com/Z3ROCH13F/cli-styler.js#readme.md",
-  "devDependencies": {}
+	"name": "cli-styler.js",
+	"version": "1.0.0",
+	"main": "index.js",
+	"directories": {
+		"lib": "lib",
+		"utils": "utils",
+		"test": "test"
+	},
+	"scripts": {
+		"format": "prettier --config ~/.config/prettier/.prettierrc --write .",
+		"test": "node --test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Z3ROCH13F/cli-styler.js.git"
+	},
+	"keywords": [
+		"terminal",
+		"color",
+		"colors",
+		"rgb",
+		"cli",
+		"style",
+		"styler",
+		"termux",
+		"2024"
+	],
+	"author": "Haikal",
+	"license": "ISC",
+	"description": "Style your terminal.",
+	"bugs": {
+		"url": "https://github.com/Z3ROCH13F/cli-styler.js/issues"
+	},
+	"homepage": "https://github.com/Z3ROCH13F/cli-styler.js#readme.md",
+	"devDependencies": {}
 }

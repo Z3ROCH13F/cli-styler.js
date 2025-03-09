@@ -9,29 +9,34 @@
  */
 const exported = {};
 
-// Define
+// Type string lowercase or undefined
+exported.tslou = function (list, check) {
+	return list[typeof check === "string" ? check?.toLowerCase() : undefined];
+};
+
+// Defines
 const def = [
-  // Libs and Utils
-  ["utils", "./utils"],
-  ["colors", "./lib/colors.json"],
-  ["sc", "./lib/select-color"],
-  ["rs", "./lib/reset"],
-  ["rst", "./lib/reset-type"],
-  ["st", "./lib/style-text"],
-  ["ttc", "./lib/type-to-color"],
-  // Main Functions
-  ["style", "./lib/style"],
-  ["styleP", "./lib/styleP"],
-  ["styleR", "./lib/styleR"],
+	// Libs & Utils
+	["utils", "./utils"],
+	["colors", "./lib/colors.json"],
+	["sc", "./lib/select-color"],
+	["rs", "./lib/reset"],
+	["rst", "./lib/reset-type"],
+	["st", "./lib/style-text"],
+	["ttc", "./lib/type-to-color"],
+	// Main Functions
+	["style", "./lib/style"],
+	["styleP", "./lib/styleP"],
+	["styleR", "./lib/styleR"],
 ];
 
 def.forEach((select) => {
-  exported[select[0]] = require(select[1]);
+	try {
+		exported[select[0]] = require(select[1]);
+	} catch (err) {
+		throw new Error(err);
+	}
 });
-
-Object.prototype.Log = function () {
-  console.log(this.valueOf());
-};
 
 // Autoload
 module.exports = exported;

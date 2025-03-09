@@ -4,7 +4,7 @@ cli-styler.js is a Node.js library that provides functions for styling text and 
 
 ## Installation
 
-You can install cli-styler.js using npm:
+Install cli-styler.js using npm:
 
 ```bash
 npm i cli-styler.js
@@ -13,20 +13,16 @@ npm i cli-styler.js
 ```js
 const cli = require("cli-styler.js");
 
-/*
-Use Object.Log() or console.log() to print it out
-*/
-
-cli.style({ color: "butter", text: "Hello Dunia!" }).Log();
-cli.styleR("<bold color: #ba22b1>Hello masbro!").Log();
-cli.styleP().bold.ul.green.text("Hello ... World").Log();
+cli.style({ color: "butter", text: "Hello Dunia!" });
+cli.styleR("<bold color: #ba22b1>Hello masbro!");
+cli.styleP().bold.ul.green.text("Hello ... World");
 ```
 
-## styleR function
+## "styleR" function
 
 ```js
 /*
-// Explanation and Example
+// Explanations and Examples
 
 // set style text
 <bold> or <b>           // set style text to bold
@@ -76,22 +72,23 @@ cli.styleP().bold.ul.green.text("Hello ... World").Log();
 
 const cli = require("cli-styler.js");
 
-// Example
-cli.styleR("<bold color: green><inverse>Hello, World!<@reset>").Log();
+// return string
+cli.styleR("<bold color: green><inverse>Hello, World!<@reset>");
 ```
 
-## styleP function
+## "styleP" function
 
 ```js
 const cli = require("cli-styler.js");
 
-cli.styleP().bold.banana.text("Hello world").Log();
-cli.styleP().bold.banana.text("Hello world", "2024").Log();
-cli.styleP().bold.banana.bgGreen.text("Hello world").Log();
-cli.styleP().textR("<inverse color:red>lol").Log();
+// return string
+cli.styleP().bold.banana.text("Hello world");
+cli.styleP().bold.banana.text("Hello world", "2024");
+cli.styleP().bold.banana.bgGreen.text("Hello world");
+cli.styleP().textR("<inverse color:red>lol");
 ```
 
-## style function
+## "style" function
 
 ```js
 const cli = require("cli-styler.js");
@@ -127,7 +124,7 @@ cli.style({text: ["foo", "bar"], line: "nline"})  // set text to "foo" "bar" and
 */
 ```
 
-## See all [color](https://z3roch13f.github.io/cli-styler.js/public/?path=colors) can you chose.
+## See all [colors](https://z3roch13f.github.io/cli-styler.js/public/?path=colors) can you chose.
 
 ## License
 
