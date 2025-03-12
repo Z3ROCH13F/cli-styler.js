@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @typedef {Object} main
  * @property {function(string): string} styleR - Main function.
@@ -9,9 +11,23 @@
  */
 const exported = {};
 
+exported.g = false;
+
 // Type string lowercase or undefined
 exported.tslou = function (list, check) {
 	return list[typeof check === "string" ? check?.toLowerCase() : undefined];
+};
+
+// Type of this.g
+exported.global = function (value) {
+	this.g = value;
+	return value;
+};
+
+exported.list = {
+	st: [],
+	bg: [],
+	color: [],
 };
 
 // Defines
@@ -24,6 +40,7 @@ const def = [
 	["rst", "./lib/reset-type"],
 	["st", "./lib/style-text"],
 	["ttc", "./lib/type-to-color"],
+	["pcolor", "./lib/parse-color"],
 	// Main Functions
 	["style", "./lib/style"],
 	["styleP", "./lib/styleP"],
