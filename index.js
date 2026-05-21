@@ -34,7 +34,7 @@ exported.list = {
 const def = [
 	// Libs & Utils
 	["utils", "./utils"],
-	["colors", "./lib/colors.json"],
+	["colors", "./lib/colors.js"],
 	["sc", "./lib/select-color"],
 	["rs", "./lib/reset"],
 	["rst", "./lib/reset-type"],

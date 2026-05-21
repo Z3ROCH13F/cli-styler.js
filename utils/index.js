@@ -22,10 +22,18 @@ module.exports = {
 		return `\x1b[48;2;${r | 0};${g | 0};${b | 0}m`;
 	},
 	IsHex(str) {
-		return /^#/.test(str);
+		return /^#([0-9A-F]{3}){1,2}$/i.test(str);
 	},
 	HexToRgb(hex) {
-		hex = parseInt(hex.replace(/^#/, ""), 16);
-		return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
+		hex = hex.replace(/^#/, "");
+		if (hex.length === 3) {
+			hex = hex
+				.split("")
+				.map((char) => char + char)
+				.join("");
+		}
+		const num = parseInt(hex, 16);
+		if (isNaN(num)) return null;
+		return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
 	},
 };

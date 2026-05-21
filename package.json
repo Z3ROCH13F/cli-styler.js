@@ -1,6 +1,6 @@
 {
 	"name": "cli-styler.js",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "index.js",
 	"directories": {
 		"lib": "lib",
@@ -9,7 +9,8 @@
 	},
 	"scripts": {
 		"format": "prettier --config ~/.config/prettier/.prettierrc --write .",
-		"test": "node --test"
+		"test": "node --test",
+		"build:colors": "node utils/generate-colors.js"
 	},
 	"repository": {
 		"type": "git",
@@ -18,17 +19,18 @@
 	"keywords": [
 		"terminal",
 		"color",
-		"colors",
-		"rgb",
+		"ansi",
+		"truecolor",
 		"cli",
-		"style",
-		"styler",
-		"termux",
-		"2024"
+		"styling",
+		"formatter",
+		"proxy",
+		"template",
+		"performance"
 	],
 	"author": "Haikal",
 	"license": "ISC",
-	"description": "Style your terminal.",
+	"description": "A high-performance, lightweight terminal styling library featuring named colors, hex support, and fluent chaining.",
 	"bugs": {
 		"url": "https://github.com/Z3ROCH13F/cli-styler.js/issues"
 	},
